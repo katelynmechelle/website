@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <circle cx="20" cy="20" r="12" stroke="#8B6914" stroke-width="1.5"/>
+  <path d="M14 20 Q20 11 26 20 Q20 29 14 20Z" fill="#8B6914" opacity="0.7"/>
+  <text x="38" y="25" font-family="Georgia, serif" font-size="13" fill="#2C2825" letter-spacing="1">KC</text>
+</svg>
