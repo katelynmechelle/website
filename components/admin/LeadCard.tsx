@@ -37,35 +37,39 @@ export default function LeadCard({ lead, onClick, isDragging }: Props) {
       {...attributes}
       {...listeners}
       onClick={onClick}
-      className={`bg-[#1e1e1e] border border-white/10 rounded-xl p-3 cursor-pointer hover:border-[#8B6914]/50 transition-colors select-none ${
+      className={`bg-[#1e1b14] border border-[#F2EDE3]/8 p-3 cursor-pointer hover:border-[#7C3020]/50 transition-colors select-none ${
         isDragging ? "shadow-2xl rotate-1" : ""
-      } ${overdue ? "border-l-2 border-l-red-500/60" : ""}`}
+      } ${overdue ? "border-l-2 border-l-[#7C3020]" : ""}`}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
-        <span className="text-sm text-white font-medium truncate">{lead.full_name}</span>
-        <span className={`text-[10px] px-1.5 py-0.5 rounded-md shrink-0 ${badgeColor}`}>
+        <span className="text-sm text-[#F2EDE3]/90 font-light truncate" style={{ fontFamily: "var(--font-serif)" }}>
+          {lead.full_name}
+        </span>
+        <span className={`text-[9px] px-1.5 py-0.5 shrink-0 tracking-wide uppercase ${badgeColor}`} style={{ fontFamily: "var(--font-sans)" }}>
           {lead.inquiry_type}
         </span>
       </div>
 
       {lead.painting_interest && (
-        <p className="text-xs text-white/50 truncate mb-1.5">🖼 {lead.painting_interest}</p>
+        <p className="text-[11px] text-[#F2EDE3]/40 truncate mb-1.5">{lead.painting_interest}</p>
       )}
 
       {lead.budget_range && (
-        <p className="text-xs text-[#8B6914]/80 mb-1.5">{lead.budget_range}</p>
+        <p className="text-[11px] text-[#7C3020]/70 mb-1.5">{lead.budget_range}</p>
       )}
 
       {(lead.city || lead.state) && (
-        <p className="text-xs text-white/30 mb-1.5">
-          📍 {[lead.city, lead.state].filter(Boolean).join(", ")}
+        <p className="text-[11px] text-[#F2EDE3]/25 mb-1.5">
+          {[lead.city, lead.state].filter(Boolean).join(", ")}
         </p>
       )}
 
       <div className="flex items-center justify-between mt-2">
-        <span className="text-[10px] text-white/25">{days}d ago</span>
+        <span className="text-[10px] text-[#F2EDE3]/20 tabular-nums">{days}d ago</span>
         {overdue && (
-          <span className="text-[10px] text-red-400">● Overdue</span>
+          <span className="text-[10px] text-[#7C3020]/80 tracking-wide uppercase" style={{ fontFamily: "var(--font-sans)" }}>
+            Overdue
+          </span>
         )}
       </div>
     </div>

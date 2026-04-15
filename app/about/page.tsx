@@ -17,7 +17,7 @@ export default function AboutPage() {
             className="text-5xl md:text-7xl font-light text-[#2C2825] mb-4"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            Katelyn Cook
+            Katelyn Mechelle
           </h1>
           <p className="text-[#2C2825]/60 text-lg">Painter · Nashville, TN</p>
         </div>
@@ -35,7 +35,7 @@ export default function AboutPage() {
             </p>
             <div className="prose prose-lg text-[#2C2825]/80 leading-relaxed space-y-5">
               <p>
-                Katelyn Cook came to painting the way most people come to things that matter — slowly, then suddenly. Raised around horses and open land, her earliest visual education happened not in classrooms but in barns and fields: the particular bronze of a chestnut coat in afternoon light, the geometry of a horse&apos;s eye, the way green deepens in shadow.
+                Katelyn Mechelle came to painting the way most people come to things that matter — slowly, then suddenly. Raised around horses and open land, her earliest visual education happened not in classrooms but in barns and fields: the particular bronze of a chestnut coat in afternoon light, the geometry of a horse&apos;s eye, the way green deepens in shadow.
               </p>
               <p>
                 She studied fine art with a focus on traditional oil painting techniques, learning the slow discipline of layered grounds, lead-white underpaintings, and the glazing methods of the Old Masters. That rigor shows in her work — not as stiffness, but as depth. Her surfaces have a quality of presence that digital reproductions rarely capture.
@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div className="aspect-[4/5] relative rounded-xl overflow-hidden shadow-lg">
               <Image
                 src="https://placehold.co/600x750/5C6B5A/F7F5F0?text=Katelyn+Cook"
-                alt="Katelyn Cook"
+                alt="Katelyn Mechelle"
                 fill
                 className="object-cover"
               />
@@ -68,7 +68,7 @@ export default function AboutPage() {
             <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-md">
               <Image
                 src="https://placehold.co/700x500/8B6914/F7F5F0?text=Studio"
-                alt="Katelyn Cook's Studio"
+                alt="Katelyn Mechelle's Studio"
                 fill
                 className="object-cover"
               />
@@ -112,7 +112,7 @@ export default function AboutPage() {
               },
               {
                 title: "Every Piece is Unique",
-                desc: "No prints, no editions. When you own a Katelyn Cook painting, you own the only one in existence. That&apos;s not a marketing line — it&apos;s just the truth.",
+                desc: "No prints, no editions. When you own a Katelyn Mechelle painting, you own the only one in existence. That&apos;s not a marketing line — it&apos;s just the truth.",
               },
             ].map((v) => (
               <div key={v.title} className="bg-[#EBE8E1] rounded-xl p-8">
