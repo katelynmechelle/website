@@ -172,3 +172,73 @@ from board,
     ('Shipped',           6)
   ) as col(name, pos)
 on conflict do nothing;
+
+-- ── PAINTINGS ────────────────────────────────────────────────────
+
+create table if not exists paintings (
+  id             uuid primary key default gen_random_uuid(),
+  slug           text not null unique,
+  title          text not null,
+  medium         text not null default 'Oil',
+  dimensions     text not null default '',
+  year           integer not null default 2024,
+  price          numeric(10,2) not null default 0,
+  original_price numeric(10,2),
+  available      boolean not null default true,
+  featured       boolean not null default false,
+  image_url      text not null default '',
+  description    text not null default '',
+  tags           text[] not null default '{}',
+  sort_order     integer not null default 0,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+create trigger paintings_updated_at
+  before update on paintings
+  for each row execute function set_updated_at();
+
+alter table paintings enable row level security;
+
+create policy "public_read_paintings" on paintings
+  for select to anon using (true);
+
+create policy "anon_write_paintings" on paintings
+  for all to anon using (true) with check (true);
+
+-- Seed with initial paintings
+insert into paintings (slug, title, medium, dimensions, year, price, available, featured, image_url, description, tags, sort_order)
+values
+  ('chestnut-reverie', 'Chestnut Reverie', 'Oil', '24" × 30"', 2024, 1800, true, true,
+   'https://placehold.co/800x1000/5C6B5A/F2EDE3?text=Chestnut+Reverie',
+   'A chestnut mare rendered in warm oils, her coat catching the last light of a golden afternoon. Painted in layered technique on linen-mounted panel.',
+   ARRAY['horse','equestrian','oil','figurative'], 0),
+  ('emerald-stillness', 'Emerald Stillness', 'Oil', '18" × 24"', 2024, 1200, true, true,
+   'https://placehold.co/800x1000/3d5a3e/F2EDE3?text=Emerald+Stillness',
+   'Deep forest greens and mossy shadows evoke the quiet interior of an old-growth wood. A meditation on stillness and the weight of living things.',
+   ARRAY['landscape','nature','oil','green'], 1),
+  ('the-bay-at-dusk', 'The Bay at Dusk', 'Oil', '30" × 40"', 2024, 2800, false, true,
+   'https://placehold.co/800x1000/8B6914/F2EDE3?text=The+Bay+at+Dusk',
+   'A bay horse silhouetted against a luminous dusk sky. Bold brushwork and a limited warm palette give this large canvas an immediate, cinematic presence.',
+   ARRAY['horse','equestrian','oil','large'], 2),
+  ('wild-study-no-3', 'Wild Study No. 3', 'Acrylic', '12" × 16"', 2024, 650, true, true,
+   'https://placehold.co/800x1000/8B7355/F2EDE3?text=Wild+Study+No.3',
+   'Part of an ongoing series of small-format studies exploring animal gesture and spontaneous mark-making.',
+   ARRAY['animal','study','acrylic','small'], 3),
+  ('morning-field', 'Morning Field', 'Oil', '16" × 20"', 2023, 950, true, false,
+   'https://placehold.co/800x1000/6B7A5C/F2EDE3?text=Morning+Field',
+   'Soft morning light across an open field. A quieter, more intimate piece.',
+   ARRAY['landscape','nature','oil','light'], 4),
+  ('constellation-horse', 'Constellation Horse', 'Mixed Media', '20" × 24"', 2023, 1400, true, false,
+   'https://placehold.co/800x1000/2C2418/F2EDE3?text=Constellation+Horse',
+   'Inspired by a recurring visual motif — a horse decorated with stars. Mixed media on canvas with gold leaf accents.',
+   ARRAY['horse','mixed media','decorative','gold'], 5),
+  ('amber-grove', 'Amber Grove', 'Watercolor', '11" × 15"', 2023, 480, true, false,
+   'https://placehold.co/800x1000/C8922A/F2EDE3?text=Amber+Grove',
+   'Warm amber and ochre tones wash through this loose watercolor of a late-autumn grove.',
+   ARRAY['landscape','watercolor','autumn','small'], 6),
+  ('dark-horse-study', 'Dark Horse Study', 'Oil', '14" × 18"', 2023, 780, false, false,
+   'https://placehold.co/800x1000/1a1a1a/F2EDE3?text=Dark+Horse+Study',
+   'A near-black horse emerges from a deep background, painted with controlled restraint and rich tonal depth.',
+   ARRAY['horse','equestrian','oil','dark'], 7)
+on conflict (slug) do nothing;

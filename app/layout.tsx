@@ -3,14 +3,14 @@ import "./globals.css";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 export const metadata: Metadata = {
-  title: "Katelyn Cook | Original Paintings",
+  title: "Katelyn Mechelle | Original Paintings",
   description:
-    "Original oil, acrylic, and mixed media paintings by Katelyn Cook. Equestrian art, animal studies, and nature-inspired works available for purchase and commission.",
+    "Original oil, acrylic, and mixed media paintings by Katelyn Mechelle. Equestrian art, animal studies, and nature-inspired works available for purchase and commission.",
   openGraph: {
-    title: "Katelyn Cook | Original Paintings",
+    title: "Katelyn Mechelle | Original Paintings",
     description: "Original paintings that bring warmth, life, and story into your space.",
     url: "https://katelyncook.art",
-    siteName: "Katelyn Cook Fine Art",
+    siteName: "Katelyn Mechelle Fine Art",
     type: "website",
   },
 };

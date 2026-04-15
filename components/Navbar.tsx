@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -13,10 +12,15 @@ const NAV_LINKS = [
   { href: "/inquire", label: "Contact" },
 ];
 
+// Pages whose hero is dark enough to need light nav text when unscrolled
+const DARK_HERO_PAGES = ["/commissions"];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+
+  const isDark = !scrolled && DARK_HERO_PAGES.includes(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -38,14 +42,25 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-7 h-7 rounded-full border border-[#7C3020]/40 flex items-center justify-center">
-            <span className="text-[9px] tracking-widest text-[#7C3020]" style={{ fontFamily: "var(--font-serif)" }}>KC</span>
+          <div className={`w-7 h-7 rounded-full border flex items-center justify-center transition-colors ${
+            isDark ? "border-[#F2EDE3]/40" : "border-[#7C3020]/40"
+          }`}>
+            <span
+              className={`text-[9px] tracking-widest transition-colors ${isDark ? "text-[#F2EDE3]" : "text-[#7C3020]"}`}
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              KC
+            </span>
           </div>
           <span
-            className="text-[11px] tracking-[0.22em] uppercase text-[#18160F] group-hover:text-[#7C3020] transition-colors"
+            className={`text-[11px] tracking-[0.22em] uppercase transition-colors ${
+              isDark
+                ? "text-[#F2EDE3]/80 group-hover:text-[#F2EDE3]"
+                : "text-[#18160F] group-hover:text-[#7C3020]"
+            }`}
             style={{ fontFamily: "var(--font-sans)" }}
           >
-            Katelyn Cook
+            Katelyn Mechelle
           </span>
         </Link>
 
@@ -57,8 +72,10 @@ export default function Navbar() {
               href={link.href}
               className={`text-[11px] tracking-[0.18em] uppercase transition-colors ${
                 pathname === link.href
-                  ? "text-[#7C3020]"
-                  : "text-[#18160F]/60 hover:text-[#18160F]"
+                  ? isDark ? "text-[#F2EDE3]" : "text-[#7C3020]"
+                  : isDark
+                    ? "text-[#F2EDE3]/60 hover:text-[#F2EDE3]"
+                    : "text-[#18160F]/60 hover:text-[#18160F]"
               }`}
             >
               {link.label}
@@ -66,7 +83,11 @@ export default function Navbar() {
           ))}
           <Link
             href="/shop"
-            className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020] transition-colors"
+            className={`text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 transition-colors ${
+              isDark
+                ? "bg-[#F2EDE3]/15 text-[#F2EDE3] hover:bg-[#F2EDE3]/25 border border-[#F2EDE3]/30"
+                : "bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020]"
+            }`}
           >
             Shop Paintings
           </Link>
@@ -74,7 +95,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-[#18160F]"
+          className={`md:hidden p-2 transition-colors ${isDark ? "text-[#F2EDE3]" : "text-[#18160F]"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}

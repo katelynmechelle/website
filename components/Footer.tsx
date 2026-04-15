@@ -14,7 +14,7 @@ export default function Footer() {
               Fine Art
             </p>
             <h3 className="text-3xl font-light text-[#F2EDE3] mb-5 leading-tight" style={{ fontFamily: "var(--font-serif)" }}>
-              Katelyn Cook
+              Katelyn Mechelle
             </h3>
             <p className="text-sm text-[#F2EDE3]/50 leading-relaxed max-w-xs">
               Original paintings rooted in nature, memory, and movement. Every work is one of a kind.
@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-[#F2EDE3]/8 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-[11px] text-[#F2EDE3]/25">
-            © {new Date().getFullYear()} Katelyn Cook. All artwork is original and protected by copyright.
+            © {new Date().getFullYear()} Katelyn Mechelle. All artwork is original and protected by copyright.
           </p>
           <p className="text-[11px] text-[#F2EDE3]/20">Nashville, TN</p>
         </div>

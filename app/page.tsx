@@ -13,7 +13,7 @@ export default function HomePage() {
         <div className="absolute right-0 top-0 bottom-0 w-[60%] hidden md:block">
           <Image
             src="https://placehold.co/1200x900/5C4A3A/F2EDE3?text=."
-            alt="Featured painting"
+            alt=""
             fill
             className="object-cover"
             priority
@@ -36,7 +36,7 @@ export default function HomePage() {
               style={{ fontFamily: "var(--font-serif)" }}
             >
               Katelyn<br />
-              <em>Cook</em>
+              <em>Mechelle</em>
             </h1>
             <p className="text-[#18160F]/60 text-base md:text-lg max-w-sm leading-relaxed mb-12">
               Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
@@ -234,7 +234,7 @@ export default function HomePage() {
               <div className="relative aspect-[4/5] overflow-hidden bg-[#E4DDD2]">
                 <Image
                   src="https://placehold.co/700x875/5C4A3A/F2EDE3?text=Artist+Photo"
-                  alt="Katelyn Cook in her studio"
+                  alt="Katelyn Mechelle in her studio"
                   fill
                   className="object-cover"
                 />
@@ -252,11 +252,11 @@ export default function HomePage() {
                 className="text-4xl md:text-5xl font-light text-[#18160F] leading-tight mb-8"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
-                Katelyn Cook
+                Katelyn Mechelle
               </h2>
               <div className="space-y-5 text-[#18160F]/70 leading-relaxed text-[15px]">
                 <p>
-                  Katelyn Cook is a painter working primarily in oils, with a deep reverence for the animal world and the landscapes it inhabits. Her work bridges the representational and the expressive — precise enough to feel present, loose enough to breathe.
+                  Katelyn Mechelle is a painter working primarily in oils, with a deep reverence for the animal world and the landscapes it inhabits. Her work bridges the representational and the expressive — precise enough to feel present, loose enough to breathe.
                 </p>
                 <p>
                   Based in Nashville, her studio practice is rooted in direct observation and a commitment to the slow, intentional qualities of traditional oil painting. Each work is built in layers that give the surfaces their characteristic depth and warmth.

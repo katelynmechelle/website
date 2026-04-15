@@ -129,7 +129,7 @@ export default function AdminBoard() {
 
   if (!configured) {
     return (
-      <div className="min-h-screen bg-[#18160F] flex items-center justify-center p-8">
+      <div className="min-h-full bg-[#18160F] flex items-center justify-center p-8">
         <div className="max-w-lg text-center">
           <p className="text-[10px] tracking-[0.25em] uppercase text-[#7C3020] mb-6" style={{ fontFamily: "var(--font-sans)" }}>
             Setup Required
@@ -154,7 +154,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#18160F]">
+      <div className="flex items-center justify-center h-full bg-[#18160F]">
         <div className="text-[#F2EDE3]/30 text-sm tracking-widest uppercase text-[11px]" style={{ fontFamily: "var(--font-sans)" }}>
           Loading…
         </div>
@@ -163,12 +163,12 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#18160F] overflow-hidden">
+    <div className="flex flex-col h-full bg-[#18160F] overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-4 px-6 py-4 border-b border-[#F2EDE3]/8 shrink-0">
         <div>
           <h1 className="text-sm font-light text-[#F2EDE3]" style={{ fontFamily: "var(--font-serif)" }}>
-            Katelyn Cook · CRM
+            Katelyn Mechelle · CRM
           </h1>
           <p className="text-[10px] text-[#F2EDE3]/30 mt-0.5 tracking-wide">{leads.length} leads</p>
         </div>

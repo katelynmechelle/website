@@ -6,11 +6,13 @@ export interface Painting {
   dimensions: string;
   year: number;
   price: number;
+  original_price?: number;
   available: boolean;
   featured: boolean;
   image: string;
   description: string;
   tags: string[];
+  sort_order?: number;
 }
 
 export interface Inquiry {
