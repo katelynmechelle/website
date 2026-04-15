@@ -51,7 +51,7 @@ export default function AboutPage() {
           <div className="relative md:sticky md:top-28">
             <div className="aspect-[4/5] relative rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="https://placehold.co/600x750/5C6B5A/F7F5F0?text=Katelyn+Cook"
+                src="/IMG_2604.jpeg"
                 alt="Katelyn Mechelle"
                 fill
                 className="object-cover"
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <div className="order-2 md:order-1">
             <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-md">
               <Image
-                src="https://placehold.co/700x500/8B6914/F7F5F0?text=Studio"
+                src="/AED3527A-5B71-4686-84CA-2843388D2F64.jpeg"
                 alt="Katelyn Mechelle's Studio"
                 fill
                 className="object-cover"

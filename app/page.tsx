@@ -12,7 +12,7 @@ export default function HomePage() {
         {/* Large background painting strip — right 60% */}
         <div className="absolute right-0 top-0 bottom-0 w-[60%] hidden md:block">
           <Image
-            src="https://placehold.co/1200x900/5C4A3A/F2EDE3?text=."
+            src="/IMG_8156.jpeg"
             alt=""
             fill
             className="object-cover"
@@ -203,9 +203,9 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: "https://placehold.co/800x1000/C4B5A0/F2EDE3?text=In+Home+I", label: "Living Room · Nashville, TN" },
-              { img: "https://placehold.co/800x1000/9B8575/F2EDE3?text=In+Home+II", label: "Study · Lexington, KY" },
-              { img: "https://placehold.co/800x1000/7A6858/F2EDE3?text=In+Home+III", label: "Entry Hall · Charleston, SC" },
+              { img: "/1C34CFC6-1218-4DD8-8AAC-327107F4D079.jpeg", label: "Living Room · Nashville, TN" },
+              { img: "/22BF8F61-B40F-414A-A208-9A4349B290DC.JPG", label: "Study · Lexington, KY" },
+              { img: "/IMG_0586.png", label: "Entry Hall · Charleston, SC" },
             ].map((item, i) => (
               <div key={i}>
                 <div className="img-zoom relative overflow-hidden aspect-[4/5]">
@@ -233,7 +233,7 @@ export default function HomePage() {
             <div className="relative order-2 md:order-1">
               <div className="relative aspect-[4/5] overflow-hidden bg-[#E4DDD2]">
                 <Image
-                  src="https://placehold.co/700x875/5C4A3A/F2EDE3?text=Artist+Photo"
+                  src="/IMG_2604.jpeg"
                   alt="Katelyn Mechelle in her studio"
                   fill
                   className="object-cover"

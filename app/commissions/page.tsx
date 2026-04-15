@@ -68,7 +68,7 @@ export default function CommissionsPage() {
         {/* Background painting — softly lit */}
         <div className="absolute inset-0">
           <Image
-            src="https://placehold.co/1400x900/2C2418/F2EDE3?text=."
+            src="/IMG_8638.jpeg"
             alt="Commission painting detail"
             fill
             className="object-cover opacity-30"
@@ -125,7 +125,7 @@ export default function CommissionsPage() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden bg-[#E4DDD2]">
               <Image
-                src="https://placehold.co/700x875/4A3C2E/F2EDE3?text=Studio+Process"
+                src="/IMG_2604.jpeg"
                 alt="Artist at work on a commission"
                 fill
                 className="object-cover"
@@ -144,10 +144,10 @@ export default function CommissionsPage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {[
-              { img: "https://placehold.co/600x750/5C4A3A/F2EDE3?text=Horse+Portrait", caption: "Equestrian portrait · 24×30″" },
-              { img: "https://placehold.co/600x750/3C4A3A/F2EDE3?text=Landscape", caption: "Custom landscape · 18×24″" },
-              { img: "https://placehold.co/600x750/6A4A3A/F2EDE3?text=Animal+Study", caption: "Animal study · 12×16″" },
-              { img: "https://placehold.co/600x750/4A3A5C/F2EDE3?text=Large+Work", caption: "Large commission · 30×40″" },
+              { img: "/IMG_7946.jpeg", caption: "Equestrian portrait · 24×30″" },
+              { img: "/IMG_9262.jpeg", caption: "Custom landscape · 18×24″" },
+              { img: "/IMG_6750.jpeg", caption: "Animal study · 12×16″" },
+              { img: "/IMG_6326.jpeg", caption: "Large commission · 30×40″" },
             ].map((item, i) => (
               <div key={i} className="img-zoom">
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#D0C8BC]">

@@ -12,7 +12,7 @@ export const PAINTINGS: Painting[] = [
     price: 1800,
     available: true,
     featured: true,
-    image: "https://placehold.co/800x1000/5C6B5A/F7F5F0?text=Chestnut+Reverie",
+    image: "/IMG_6408.jpeg",
     description:
       "A chestnut mare rendered in warm oils, her coat catching the last light of a golden afternoon. Painted in Katelyn's signature layered technique on linen-mounted panel.",
     tags: ["horse", "equestrian", "oil", "figurative"],
@@ -27,7 +27,7 @@ export const PAINTINGS: Painting[] = [
     price: 1200,
     available: true,
     featured: true,
-    image: "https://placehold.co/800x1000/3d5a3e/F7F5F0?text=Emerald+Stillness",
+    image: "/IMG_9258.jpeg",
     description:
       "Deep forest greens and mossy shadows evoke the quiet interior of an old-growth wood. A meditation on stillness and the weight of living things.",
     tags: ["landscape", "nature", "oil", "green"],
@@ -42,7 +42,7 @@ export const PAINTINGS: Painting[] = [
     price: 2800,
     available: false,
     featured: true,
-    image: "https://placehold.co/800x1000/8B6914/F7F5F0?text=The+Bay+at+Dusk",
+    image: "/IMG_7876.jpeg",
     description:
       "A bay horse silhouetted against a luminous dusk sky. Bold brushwork and a limited warm palette give this large canvas an immediate, almost cinematic presence.",
     tags: ["horse", "equestrian", "oil", "large"],
@@ -57,7 +57,7 @@ export const PAINTINGS: Painting[] = [
     price: 650,
     available: true,
     featured: true,
-    image: "https://placehold.co/800x1000/8B7355/F7F5F0?text=Wild+Study+No.3",
+    image: "/IMG_4320.jpeg",
     description:
       "Part of an ongoing series of small-format studies exploring animal gesture and spontaneous mark-making. Loose, expressive, and full of energy.",
     tags: ["animal", "study", "acrylic", "small"],
@@ -72,7 +72,7 @@ export const PAINTINGS: Painting[] = [
     price: 950,
     available: true,
     featured: false,
-    image: "https://placehold.co/800x1000/6B7A5C/F7F5F0?text=Morning+Field",
+    image: "/IMG_9255.jpeg",
     description:
       "Soft morning light across an open field. A quieter, more intimate piece — perfect for a reading room or bedroom.",
     tags: ["landscape", "nature", "oil", "light"],
@@ -87,7 +87,7 @@ export const PAINTINGS: Painting[] = [
     price: 1400,
     available: true,
     featured: false,
-    image: "https://placehold.co/800x1000/2C2825/F7F5F0?text=Constellation+Horse",
+    image: "/IMG_9825.jpeg",
     description:
       "Inspired by a recurring visual motif in her sketchbooks — a horse decorated with stars. Mixed media on canvas with gold leaf accents.",
     tags: ["horse", "mixed media", "decorative", "gold"],
@@ -102,7 +102,7 @@ export const PAINTINGS: Painting[] = [
     price: 480,
     available: true,
     featured: false,
-    image: "https://placehold.co/800x1000/C8922A/F7F5F0?text=Amber+Grove",
+    image: "/IMG_0417.jpeg",
     description:
       "Warm amber and ochre tones wash through this loose watercolor of a late-autumn grove. Light, airy, and full of movement.",
     tags: ["landscape", "watercolor", "autumn", "small"],
@@ -117,7 +117,7 @@ export const PAINTINGS: Painting[] = [
     price: 780,
     available: false,
     featured: false,
-    image: "https://placehold.co/800x1000/1a1a1a/F7F5F0?text=Dark+Horse+Study",
+    image: "/IMG_8638.jpeg",
     description:
       "A near-black horse emerges from a deep background, painted with controlled restraint and rich tonal depth. Now in a private collection.",
     tags: ["horse", "equestrian", "oil", "dark"],
