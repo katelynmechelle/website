@@ -34,16 +34,22 @@ function Field({
     if (val !== value) onSave(val);
   };
 
+  const labelEl = (
+    <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/30 block mb-1" style={{ fontFamily: "var(--font-sans)" }}>
+      {label}
+    </label>
+  );
+
   if (large) {
     return (
       <div>
-        <label className="text-xs text-white/40 block mb-1">{label}</label>
+        {labelEl}
         <textarea
           rows={3}
           value={val}
           onChange={(e) => setVal(e.target.value)}
           onBlur={save}
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60 resize-none"
+          className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3]/80 focus:outline-none focus:border-[#7C3020]/60 resize-none transition-colors"
         />
       </div>
     );
@@ -51,7 +57,7 @@ function Field({
 
   return (
     <div>
-      <label className="text-xs text-white/40 block mb-1">{label}</label>
+      {labelEl}
       {editing ? (
         <input
           autoFocus
@@ -60,14 +66,14 @@ function Field({
           onChange={(e) => setVal(e.target.value)}
           onBlur={save}
           onKeyDown={(e) => e.key === "Enter" && save()}
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60"
+          className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3]/80 focus:outline-none focus:border-[#7C3020]/60 transition-colors"
         />
       ) : (
         <div
           onClick={() => setEditing(true)}
-          className="px-3 py-2 text-sm text-white/80 hover:bg-white/5 rounded-lg cursor-text border border-transparent hover:border-white/10 transition-colors min-h-[36px]"
+          className="px-3 py-2 text-sm text-[#F2EDE3]/70 hover:bg-[#F2EDE3]/5 cursor-text border border-transparent hover:border-[#F2EDE3]/8 transition-colors min-h-[36px]"
         >
-          {val || <span className="text-white/20">Click to edit</span>}
+          {val || <span className="text-[#F2EDE3]/15">Click to edit</span>}
         </div>
       )}
     </div>
@@ -126,45 +132,41 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
     ...activity.map((a) => ({ ...a, _type: "activity" as const })),
   ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
-  const currentColumn = columns.find((c) => c.id === lead.pipeline_column_id);
-
   return (
     <div
       className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
       onClick={onClose}
     >
       <div
-        className="bg-[#1e1e1e] rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl"
+        className="bg-[#1e1b14] border border-[#F2EDE3]/10 w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 pt-5 pb-4 border-b border-white/10 shrink-0">
+        <div className="px-6 pt-5 pb-4 border-b border-[#F2EDE3]/8 shrink-0">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <input
-                className="text-xl text-white bg-transparent w-full outline-none border-b border-transparent focus:border-[#8B6914] pb-1"
+                className="text-2xl font-light text-[#F2EDE3] bg-transparent w-full outline-none border-b border-transparent focus:border-[#7C3020] pb-1 transition-colors"
                 style={{ fontFamily: "var(--font-serif)" }}
                 defaultValue={lead.full_name}
                 onBlur={(e) => onUpdate({ full_name: e.target.value })}
               />
             </div>
-            <button onClick={onClose} className="ml-4 text-white/40 hover:text-white text-xl leading-none">
+            <button onClick={onClose} className="ml-4 text-[#F2EDE3]/30 hover:text-[#F2EDE3] text-2xl leading-none transition-colors">
               ×
             </button>
           </div>
-          {/* Stage pill */}
+          {/* Stage selector */}
           <select
             value={lead.pipeline_column_id}
             onChange={(e) => onUpdate({ pipeline_column_id: e.target.value })}
-            className="mt-3 text-xs bg-[#8B6914]/20 text-[#8B6914] border border-[#8B6914]/30 rounded-full px-3 py-1 outline-none cursor-pointer"
+            className="mt-3 text-[10px] tracking-[0.15em] uppercase bg-[#7C3020]/20 text-[#E8A898] border border-[#7C3020]/30 px-3 py-1.5 outline-none cursor-pointer transition-colors hover:bg-[#7C3020]/30"
+            style={{ fontFamily: "var(--font-sans)" }}
           >
             {columns.map((c) => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
           </select>
-          {currentColumn && (
-            <span className="ml-2 text-xs text-white/30">{currentColumn.name}</span>
-          )}
         </div>
 
         {/* Body */}
@@ -179,11 +181,13 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
 
           {/* Inquiry details */}
           <div>
-            <label className="text-xs text-white/40 block mb-2">Inquiry Type</label>
+            <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/30 block mb-2" style={{ fontFamily: "var(--font-sans)" }}>
+              Inquiry Type
+            </label>
             <select
               value={lead.inquiry_type}
               onChange={(e) => onUpdate({ inquiry_type: e.target.value })}
-              className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[#8B6914]/60"
+              className="bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3]/80 outline-none focus:border-[#7C3020]/60 transition-colors"
             >
               <option value="purchase">Purchase</option>
               <option value="commission">Commission</option>
@@ -205,12 +209,14 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
 
           {/* Tags */}
           <div>
-            <label className="text-xs text-white/40 block mb-2">Tags</label>
+            <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/30 block mb-2" style={{ fontFamily: "var(--font-sans)" }}>
+              Tags
+            </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {tags.map((t) => (
-                <span key={t} className="flex items-center gap-1 text-xs bg-white/10 text-white/70 rounded-full px-2.5 py-1">
+                <span key={t} className="flex items-center gap-1 text-[10px] tracking-wide bg-[#F2EDE3]/8 text-[#F2EDE3]/60 px-2.5 py-1">
                   {t}
-                  <button onClick={() => removeTag(t)} className="text-white/30 hover:text-white leading-none">×</button>
+                  <button onClick={() => removeTag(t)} className="text-[#F2EDE3]/30 hover:text-[#F2EDE3] leading-none ml-0.5">×</button>
                 </span>
               ))}
             </div>
@@ -220,9 +226,13 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
                 onChange={(e) => setNewTag(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && addTag()}
                 placeholder="Add tag…"
-                className="text-xs bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-white focus:outline-none focus:border-[#8B6914]/60 w-36"
+                className="text-xs bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-1.5 text-[#F2EDE3]/70 focus:outline-none focus:border-[#7C3020]/60 w-36 transition-colors"
               />
-              <button onClick={addTag} className="text-xs px-3 py-1.5 bg-white/5 text-white/50 rounded-lg hover:bg-white/10">
+              <button
+                onClick={addTag}
+                className="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-[#F2EDE3]/5 text-[#F2EDE3]/40 hover:bg-[#F2EDE3]/10 transition-colors"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
                 Add
               </button>
             </div>
@@ -233,18 +243,21 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
 
           {/* Add note */}
           <div>
-            <label className="text-xs text-white/40 block mb-2">Add Note to Timeline</label>
+            <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/30 block mb-2" style={{ fontFamily: "var(--font-sans)" }}>
+              Add Note to Timeline
+            </label>
             <div className="flex gap-2">
               <textarea
                 rows={2}
                 value={newNote}
                 onChange={(e) => setNewNote(e.target.value)}
                 placeholder="Write a note…"
-                className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60 resize-none"
+                className="flex-1 bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3]/70 focus:outline-none focus:border-[#7C3020]/60 resize-none placeholder:text-[#F2EDE3]/20 transition-colors"
               />
               <button
                 onClick={addNote}
-                className="px-3 bg-[#8B6914] text-white rounded-lg text-sm hover:bg-[#7a5c10] transition-colors"
+                className="px-4 bg-[#7C3020] text-[#F2EDE3] text-[10px] tracking-[0.15em] uppercase hover:bg-[#6b2518] transition-colors"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
                 Post
               </button>
@@ -254,16 +267,18 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
           {/* Timeline */}
           {merged.length > 0 && (
             <div>
-              <label className="text-xs text-white/40 block mb-3">Activity Timeline</label>
+              <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/30 block mb-3" style={{ fontFamily: "var(--font-sans)" }}>
+                Activity Timeline
+              </label>
               <div className="space-y-3">
                 {merged.map((item) => (
                   <div key={item.id} className="flex gap-3 text-xs">
                     <div className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${
-                      item._type === "note" ? "bg-[#8B6914]" : "bg-white/30"
+                      item._type === "note" ? "bg-[#7C3020]" : "bg-[#F2EDE3]/20"
                     }`} />
                     <div>
-                      <p className="text-white/70 leading-relaxed">{item.body}</p>
-                      <p className="text-white/25 mt-0.5">
+                      <p className="text-[#F2EDE3]/60 leading-relaxed">{item.body}</p>
+                      <p className="text-[#F2EDE3]/20 mt-0.5">
                         {new Date(item.created_at).toLocaleString()}
                       </p>
                     </div>
@@ -275,9 +290,13 @@ export default function LeadModal({ lead, columns, onClose, onUpdate }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3 border-t border-white/10 flex items-center justify-between text-xs text-white/25 shrink-0">
-          <span>Created {new Date(lead.created_at).toLocaleDateString()}</span>
-          <span>Updated {new Date(lead.updated_at).toLocaleDateString()}</span>
+        <div className="px-6 py-3 border-t border-[#F2EDE3]/8 flex items-center justify-between shrink-0">
+          <span className="text-[10px] text-[#F2EDE3]/20 tracking-wide">
+            Created {new Date(lead.created_at).toLocaleDateString()}
+          </span>
+          <span className="text-[10px] text-[#F2EDE3]/20 tracking-wide">
+            Updated {new Date(lead.updated_at).toLocaleDateString()}
+          </span>
         </div>
       </div>
     </div>

@@ -18,9 +18,9 @@ import LeadCard from "./LeadCard";
 import LeadModal from "./LeadModal";
 
 const BADGE_COLORS: Record<string, string> = {
-  purchase: "bg-emerald-900/60 text-emerald-300",
-  commission: "bg-amber-900/60 text-amber-300",
-  general: "bg-slate-700 text-slate-300",
+  purchase: "bg-emerald-900/50 text-emerald-400",
+  commission: "bg-[#7C3020]/40 text-[#E8A898]",
+  general: "bg-[#F2EDE3]/10 text-[#F2EDE3]/50",
 };
 
 export { BADGE_COLORS };
@@ -129,19 +129,23 @@ export default function AdminBoard() {
 
   if (!configured) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center p-8">
+      <div className="min-h-screen bg-[#18160F] flex items-center justify-center p-8">
         <div className="max-w-lg text-center">
-          <div className="text-4xl mb-4">⚙️</div>
-          <h1 className="text-xl text-white mb-4">Supabase Not Configured</h1>
-          <p className="text-white/60 text-sm mb-6 leading-relaxed">
-            To use the admin board, add your Supabase credentials to <code className="bg-white/10 px-1 rounded">.env.local</code>:
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#7C3020] mb-6" style={{ fontFamily: "var(--font-sans)" }}>
+            Setup Required
           </p>
-          <pre className="bg-black/40 rounded-lg p-4 text-left text-xs text-green-400 mb-6">
+          <h1 className="text-2xl font-light text-[#F2EDE3] mb-5" style={{ fontFamily: "var(--font-serif)" }}>
+            Supabase Not Configured
+          </h1>
+          <p className="text-[#F2EDE3]/50 text-sm mb-6 leading-relaxed">
+            Add your Supabase credentials to <code className="bg-[#F2EDE3]/10 px-1.5 py-0.5 rounded-sm text-[#F2EDE3]/70">.env.local</code>:
+          </p>
+          <pre className="bg-black/40 border border-[#F2EDE3]/8 p-4 text-left text-xs text-[#7C3020]/80 mb-6">
 {`NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
           </pre>
-          <p className="text-white/40 text-xs">
-            Then run <code className="bg-white/10 px-1 rounded">supabase-schema.sql</code> in your Supabase SQL Editor.
+          <p className="text-[#F2EDE3]/30 text-xs">
+            Then run <code className="bg-[#F2EDE3]/10 px-1.5 py-0.5 rounded-sm">supabase-schema.sql</code> in your Supabase SQL Editor.
           </p>
         </div>
       </div>
@@ -150,19 +154,23 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#1a1a1a]">
-        <div className="text-white/40 text-sm">Loading board…</div>
+      <div className="flex items-center justify-center h-screen bg-[#18160F]">
+        <div className="text-[#F2EDE3]/30 text-sm tracking-widest uppercase text-[11px]" style={{ fontFamily: "var(--font-sans)" }}>
+          Loading…
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#1a1a1a] overflow-hidden">
+    <div className="flex flex-col h-screen bg-[#18160F] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-4 px-6 py-4 border-b border-white/10 shrink-0">
+      <div className="flex items-center gap-4 px-6 py-4 border-b border-[#F2EDE3]/8 shrink-0">
         <div>
-          <h1 className="text-sm font-medium text-white">Katelyn Cook · CRM</h1>
-          <p className="text-xs text-white/40">{leads.length} leads</p>
+          <h1 className="text-sm font-light text-[#F2EDE3]" style={{ fontFamily: "var(--font-serif)" }}>
+            Katelyn Cook · CRM
+          </h1>
+          <p className="text-[10px] text-[#F2EDE3]/30 mt-0.5 tracking-wide">{leads.length} leads</p>
         </div>
 
         <div className="flex-1 max-w-xs ml-4">
@@ -171,18 +179,21 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
             placeholder="Search leads…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#8B6914]/60"
+            className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3] placeholder-[#F2EDE3]/25 focus:outline-none focus:border-[#7C3020]/60 transition-colors"
           />
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           {["All", "Purchase", "Commission", "General"].map((t) => (
             <button
               key={t}
               onClick={() => setFilterType(t)}
-              className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
-                filterType === t ? "bg-[#8B6914] text-white" : "bg-white/5 text-white/60 hover:bg-white/10"
+              className={`text-[10px] tracking-[0.12em] uppercase px-3 py-1.5 transition-colors ${
+                filterType === t
+                  ? "bg-[#7C3020] text-[#F2EDE3]"
+                  : "bg-[#F2EDE3]/5 text-[#F2EDE3]/50 hover:bg-[#F2EDE3]/10"
               }`}
+              style={{ fontFamily: "var(--font-sans)" }}
             >
               {t}
             </button>
@@ -192,13 +203,15 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
         <div className="ml-auto flex gap-2">
           <button
             onClick={() => setShowAddLead(true)}
-            className="text-xs px-3 py-1.5 bg-[#8B6914] hover:bg-[#7a5c10] text-white rounded-md transition-colors"
+            className="text-[10px] tracking-[0.12em] uppercase px-3 py-1.5 bg-[#7C3020] hover:bg-[#6b2518] text-[#F2EDE3] transition-colors"
+            style={{ fontFamily: "var(--font-sans)" }}
           >
             + Add Lead
           </button>
           <button
             onClick={fetchBoard}
-            className="text-xs px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white/60 rounded-md transition-colors"
+            className="text-[10px] tracking-[0.12em] uppercase px-3 py-1.5 bg-[#F2EDE3]/5 hover:bg-[#F2EDE3]/10 text-[#F2EDE3]/50 transition-colors"
+            style={{ fontFamily: "var(--font-sans)" }}
           >
             ↻ Refresh
           </button>
@@ -239,20 +252,20 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
             {/* Add Column */}
             <div className="w-72 shrink-0">
               {addingColumn ? (
-                <div className="bg-white/5 rounded-xl p-3">
+                <div className="bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 p-3">
                   <input
                     autoFocus
                     value={newColumnName}
                     onChange={(e) => setNewColumnName(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleAddColumn()}
                     placeholder="Column name…"
-                    className="w-full bg-transparent text-sm text-white border-b border-white/20 focus:border-[#8B6914] outline-none pb-1 mb-3"
+                    className="w-full bg-transparent text-sm text-[#F2EDE3] border-b border-[#F2EDE3]/20 focus:border-[#7C3020] outline-none pb-1 mb-3"
                   />
                   <div className="flex gap-2">
-                    <button onClick={handleAddColumn} className="text-xs px-3 py-1.5 bg-[#8B6914] text-white rounded-md">
+                    <button onClick={handleAddColumn} className="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-[#7C3020] text-[#F2EDE3]">
                       Add
                     </button>
-                    <button onClick={() => setAddingColumn(false)} className="text-xs px-3 py-1.5 bg-white/5 text-white/50 rounded-md">
+                    <button onClick={() => setAddingColumn(false)} className="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-[#F2EDE3]/5 text-[#F2EDE3]/40">
                       Cancel
                     </button>
                   </div>
@@ -260,7 +273,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
               ) : (
                 <button
                   onClick={() => setAddingColumn(true)}
-                  className="w-full h-12 rounded-xl border border-dashed border-white/20 text-white/30 hover:text-white/60 hover:border-white/40 text-sm transition-colors"
+                  className="w-full h-12 border border-dashed border-[#F2EDE3]/15 text-[#F2EDE3]/25 hover:text-[#F2EDE3]/50 hover:border-[#F2EDE3]/30 text-xs tracking-widest uppercase transition-colors"
+                  style={{ fontFamily: "var(--font-sans)" }}
                 >
                   + Add Column
                 </button>
@@ -295,39 +309,47 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
       {/* Add Lead Modal */}
       {showAddLead && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={() => setShowAddLead(false)}
         >
           <div
-            className="bg-[#252525] rounded-2xl p-6 w-full max-w-md shadow-2xl"
+            className="bg-[#1e1b14] border border-[#F2EDE3]/10 p-6 w-full max-w-md shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-base text-white mb-5">Add Lead</h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-light text-[#F2EDE3] mb-6" style={{ fontFamily: "var(--font-serif)" }}>
+              Add Lead
+            </h2>
+            <div className="space-y-5">
               <div>
-                <label className="text-xs text-white/50 block mb-1">Full Name *</label>
+                <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/40 block mb-1.5" style={{ fontFamily: "var(--font-sans)" }}>
+                  Full Name *
+                </label>
                 <input
                   type="text"
                   value={newLeadForm.full_name}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, full_name: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60"
+                  className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3] focus:outline-none focus:border-[#7C3020]/60 transition-colors"
                 />
               </div>
               <div>
-                <label className="text-xs text-white/50 block mb-1">Email *</label>
+                <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/40 block mb-1.5" style={{ fontFamily: "var(--font-sans)" }}>
+                  Email *
+                </label>
                 <input
                   type="email"
                   value={newLeadForm.email}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60"
+                  className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3] focus:outline-none focus:border-[#7C3020]/60 transition-colors"
                 />
               </div>
               <div>
-                <label className="text-xs text-white/50 block mb-1">Type</label>
+                <label className="text-[10px] tracking-[0.15em] uppercase text-[#F2EDE3]/40 block mb-1.5" style={{ fontFamily: "var(--font-sans)" }}>
+                  Type
+                </label>
                 <select
                   value={newLeadForm.inquiry_type}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, inquiry_type: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#8B6914]/60"
+                  className="w-full bg-[#F2EDE3]/5 border border-[#F2EDE3]/10 px-3 py-2 text-sm text-[#F2EDE3] focus:outline-none focus:border-[#7C3020]/60 transition-colors"
                 >
                   <option value="purchase">Purchase</option>
                   <option value="commission">Commission</option>
@@ -335,16 +357,18 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
                 </select>
               </div>
             </div>
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-7">
               <button
                 onClick={handleAddLead}
-                className="flex-1 py-2.5 bg-[#8B6914] text-white text-sm rounded-lg hover:bg-[#7a5c10] transition-colors"
+                className="flex-1 py-3 bg-[#7C3020] text-[#F2EDE3] text-[10px] tracking-[0.15em] uppercase hover:bg-[#6b2518] transition-colors"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
                 Create Lead
               </button>
               <button
                 onClick={() => setShowAddLead(false)}
-                className="px-4 py-2.5 bg-white/5 text-white/60 text-sm rounded-lg hover:bg-white/10 transition-colors"
+                className="px-4 py-3 bg-[#F2EDE3]/5 text-[#F2EDE3]/50 text-[10px] tracking-[0.15em] uppercase hover:bg-[#F2EDE3]/10 transition-colors"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
                 Cancel
               </button>
