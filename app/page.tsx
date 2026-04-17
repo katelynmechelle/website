@@ -19,52 +19,55 @@ export default function HomePage() {
             priority
           />
         </div>
-        {/* Uniform light wash so the painting shows through on both sides */}
-        <div className="absolute inset-0 bg-[#F2EDE3]/50" />
-        {/* Bottom scrim so scroll cue stays legible */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2EDE3]/40 to-transparent" />
+        {/* Soft vignette mask — painting emerges on both left and right edges,
+            opacity peaks only in the center-left where the text sits */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, rgba(242,237,227,0.38) 0%, rgba(242,237,227,0.82) 22%, rgba(242,237,227,0.78) 46%, rgba(242,237,227,0.18) 72%, rgba(242,237,227,0.06) 100%)",
+          }}
+        />
+        {/* Bottom scrim */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2EDE3]/25 to-transparent" />
 
         {/* Text column */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-end pb-20 pt-32">
-          {/* Frosted backdrop keeps text legible while painting bleeds through around it */}
           <div className="md:max-w-[46%]">
-            <div className="inline-block bg-[#F2EDE3]/60 backdrop-blur-[2px] px-6 py-8 -mx-6">
-              <p
-                className="text-[10px] tracking-[0.3em] uppercase text-[#7C3020] mb-8"
-                style={{ fontFamily: "var(--font-sans)" }}
+            <p
+              className="text-[10px] tracking-[0.3em] uppercase text-[#7C3020] mb-8"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Fine Art · Nashville, TN
+            </p>
+            <h1
+              className="text-[clamp(3.5rem,9vw,8rem)] font-light leading-[0.9] text-[#18160F] mb-8"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              Katelyn<br />
+              <em>Mechelle</em>
+            </h1>
+            <p className="text-[#18160F]/70 text-base md:text-lg max-w-sm leading-relaxed mb-12">
+              Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/shop"
+                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020] transition-colors"
               >
-                Fine Art · Nashville, TN
-              </p>
-              <h1
-                className="text-[clamp(3.5rem,9vw,8rem)] font-light leading-[0.9] text-[#18160F] mb-8"
-                style={{ fontFamily: "var(--font-serif)" }}
+                Shop Paintings
+              </Link>
+              <Link
+                href="/commissions"
+                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/30 text-[#18160F]/70 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors"
               >
-                Katelyn<br />
-                <em>Mechelle</em>
-              </h1>
-              <p className="text-[#18160F]/80 text-base md:text-lg max-w-sm leading-relaxed mb-12">
-                Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/shop"
-                  className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020] transition-colors"
-                >
-                  Shop Paintings
-                </Link>
-                <Link
-                  href="/commissions"
-                  className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/40 text-[#18160F]/80 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors"
-                >
-                  Commission a Work
-                </Link>
-              </div>
+                Commission a Work
+              </Link>
             </div>
           </div>
 
           {/* Scroll cue */}
-          <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-2 text-[#18160F]/40">
-            <div className="w-px h-12 bg-[#18160F]/30" />
+          <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-2 text-[#18160F]/20">
+            <div className="w-px h-12 bg-[#18160F]/20" />
             <span className="text-[9px] tracking-[0.3em] uppercase" style={{ fontFamily: "var(--font-sans)" }}>
               Scroll
             </span>
