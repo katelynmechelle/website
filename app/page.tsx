@@ -19,43 +19,46 @@ export default function HomePage() {
             priority
           />
         </div>
-        {/* Gradient overlay: solid linen on the left (text area) fading out to the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F2EDE3] via-[#F2EDE3]/90 md:via-[#F2EDE3]/70 to-[#F2EDE3]/40 md:to-transparent" />
+        {/* Uniform light wash so the painting shows through on both sides */}
+        <div className="absolute inset-0 bg-[#F2EDE3]/50" />
         {/* Bottom scrim so scroll cue stays legible */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2EDE3]/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2EDE3]/40 to-transparent" />
 
         {/* Text column */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-end pb-20 pt-32">
+          {/* Frosted backdrop keeps text legible while painting bleeds through around it */}
           <div className="md:max-w-[46%]">
-            <p
-              className="text-[10px] tracking-[0.3em] uppercase text-[#7C3020] mb-8"
-              style={{ fontFamily: "var(--font-sans)" }}
-            >
-              Fine Art · Nashville, TN
-            </p>
-            <h1
-              className="text-[clamp(3.5rem,9vw,8rem)] font-light leading-[0.9] text-[#18160F] mb-8"
-              style={{ fontFamily: "var(--font-serif)" }}
-            >
-              Katelyn<br />
-              <em>Mechelle</em>
-            </h1>
-            <p className="text-[#18160F]/70 text-base md:text-lg max-w-sm leading-relaxed mb-12">
-              Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/shop"
-                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020] transition-colors"
+            <div className="inline-block bg-[#F2EDE3]/60 backdrop-blur-[2px] px-6 py-8 -mx-6">
+              <p
+                className="text-[10px] tracking-[0.3em] uppercase text-[#7C3020] mb-8"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
-                Shop Paintings
-              </Link>
-              <Link
-                href="/commissions"
-                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/40 text-[#18160F]/80 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors bg-[#F2EDE3]/40 backdrop-blur-sm"
+                Fine Art · Nashville, TN
+              </p>
+              <h1
+                className="text-[clamp(3.5rem,9vw,8rem)] font-light leading-[0.9] text-[#18160F] mb-8"
+                style={{ fontFamily: "var(--font-serif)" }}
               >
-                Commission a Work
-              </Link>
+                Katelyn<br />
+                <em>Mechelle</em>
+              </h1>
+              <p className="text-[#18160F]/80 text-base md:text-lg max-w-sm leading-relaxed mb-12">
+                Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/shop"
+                  className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 bg-[#18160F] text-[#F2EDE3] hover:bg-[#7C3020] transition-colors"
+                >
+                  Shop Paintings
+                </Link>
+                <Link
+                  href="/commissions"
+                  className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/40 text-[#18160F]/80 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors"
+                >
+                  Commission a Work
+                </Link>
+              </div>
             </div>
           </div>
 
