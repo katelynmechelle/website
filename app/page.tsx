@@ -8,22 +8,24 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative min-h-screen bg-[#F2EDE3] overflow-hidden">
-        {/* Large background painting strip — right 60% */}
-        <div className="absolute right-0 top-0 bottom-0 w-[60%] hidden md:block">
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Full-bleed background painting */}
+        <div className="absolute inset-0">
           <Image
-            src="https://placehold.co/1200x900/5C4A3A/F2EDE3?text=."
+            src="/Main.png"
             alt=""
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          {/* Gradient fade left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F2EDE3] via-[#F2EDE3]/40 to-transparent" />
         </div>
+        {/* Gradient overlay: solid linen on the left (text area) fading out to the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F2EDE3] via-[#F2EDE3]/90 md:via-[#F2EDE3]/70 to-[#F2EDE3]/40 md:to-transparent" />
+        {/* Bottom scrim so scroll cue stays legible */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2EDE3]/30 to-transparent" />
 
         {/* Text column */}
-        <div className="relative max-w-7xl mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-end pb-20 pt-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-end pb-20 pt-32">
           <div className="md:max-w-[46%]">
             <p
               className="text-[10px] tracking-[0.3em] uppercase text-[#7C3020] mb-8"
@@ -38,7 +40,7 @@ export default function HomePage() {
               Katelyn<br />
               <em>Mechelle</em>
             </h1>
-            <p className="text-[#18160F]/60 text-base md:text-lg max-w-sm leading-relaxed mb-12">
+            <p className="text-[#18160F]/70 text-base md:text-lg max-w-sm leading-relaxed mb-12">
               Original paintings rooted in nature, memory, and the quiet life of animals. Every work is singular — made once, owned forever.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -50,7 +52,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/commissions"
-                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/30 text-[#18160F]/70 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors"
+                className="text-[11px] tracking-[0.2em] uppercase px-7 py-3.5 border border-[#18160F]/40 text-[#18160F]/80 hover:border-[#7C3020] hover:text-[#7C3020] transition-colors bg-[#F2EDE3]/40 backdrop-blur-sm"
               >
                 Commission a Work
               </Link>
@@ -58,8 +60,8 @@ export default function HomePage() {
           </div>
 
           {/* Scroll cue */}
-          <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-2 text-[#18160F]/20">
-            <div className="w-px h-12 bg-[#18160F]/20" />
+          <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-2 text-[#18160F]/40">
+            <div className="w-px h-12 bg-[#18160F]/30" />
             <span className="text-[9px] tracking-[0.3em] uppercase" style={{ fontFamily: "var(--font-sans)" }}>
               Scroll
             </span>

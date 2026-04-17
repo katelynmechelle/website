@@ -41,7 +41,7 @@ export default function PortfolioPage() {
 
       {/* Filter Tabs */}
       <div className="sticky top-16 z-30 bg-[#F7F5F0]/95 backdrop-blur-sm border-b border-[#EBE8E1]">
-        <div className="max-w-7xl mx-auto px-6 flex gap-6 overflow-x-auto py-4">
+        <div className="max-w-7xl mx-auto px-6 flex items-center gap-6 overflow-x-auto py-4">
           {TABS.map((tab) => (
             <button
               key={tab}
@@ -55,6 +55,19 @@ export default function PortfolioPage() {
               {tab}
             </button>
           ))}
+          {/* Admin shortcut — right-aligned */}
+          <div className="ml-auto">
+            <Link
+              href="/admin/paintings"
+              className="flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase whitespace-nowrap px-3 py-1.5 border border-[#2C2825]/20 text-[#2C2825]/50 hover:border-[#8B6914] hover:text-[#8B6914] transition-colors"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              Add Painting
+            </Link>
+          </div>
         </div>
       </div>
 
